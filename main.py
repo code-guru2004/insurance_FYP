@@ -9,6 +9,14 @@ with open("model.pkl", "rb") as f:
 
 app = FastAPI()
 
+# Enable CORS for all origins
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # ----- Input Schema -----
 class InsuranceRequest(BaseModel):
     age: int
